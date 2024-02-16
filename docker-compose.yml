@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  ros-noetic:
+    container_name: ros-noetic
+    build:
+      context: ./build
+      args:
+        TARGET: cpu # cpu or gpu
+        # find user id and group ids with:
+        # id -u
+        # id -g
+        # cat /etc/group | grep video
+        UID: 1000
+        GID: 1000
+    network_mode: host
+    privileged: true
+    command: tail -f /dev/null
+    tty: true
+    environment:
+      # - UDEV=1
+      - TERM=xterm-256color
+      - DEBUG_COLORS=true
+      - COLORTERM=truecolor
+      # - ROS_MASTER_URI=http://rotterdam:11311 # dortmund, 
+    volumes: 
+      - ./catkin_ws:/home/docker/catkin_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/timezone:/etc/timezone:ro
+      - /dev/:/dev/
+      - /run/udev:/run/udev
+      - /run/dbus/:/run/dbus
