@@ -84,6 +84,7 @@ RUN sudo ninja -C build install
 ## END: libcamera
 ## BEGIN: LCCV
 ################################################################
+RUN apt install -y libopencv-dev
 RUN git clone https://github.com/kbarni/LCCV.git /opt/LCCV
 RUN mkdir /opt/LCCV/build
 WORKDIR /opt/LCCV/build

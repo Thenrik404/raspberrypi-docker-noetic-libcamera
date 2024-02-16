@@ -6,7 +6,7 @@ Note: The system is designed to run in headless mode. In the Dockerfile, we comp
 from source. Thus, if a GUI is needed one needs to modify the build instructions in the dockerfile and set the DISPLAY variable in the docker-compose.yaml
 
 
-The setup was successfully tested on a raspberry pi 5 with bookworm as host system.
+The setup was successfully tested on a raspberry pi 5 with bookworm as host system and camera-module v1.
 
 ### Setup guide
 
