@@ -1,14 +1,19 @@
-### Description
+## Description
 
 [Docker container](https://www.docker.com/) enabling the raspberry pi camera in ros-noetic.
 
-Note: The system is designed to run in headless mode. In the Dockerfile, we compile libcamera
+**Note:**
+
+The system is designed to run in headless mode. In the Dockerfile, we compile libcamera
 from source. Thus, if a GUI is needed one needs to modify the build instructions in the dockerfile and set the DISPLAY variable in the docker-compose.yaml
 
 
 The setup was successfully tested on a raspberry pi 5 with bookworm as host system and camera-module v1.
 
-### Setup guide
+
+
+## Setup guide
+
 
 #### Host Setup:
 
@@ -55,9 +60,9 @@ Logout and login. To verify the docker installation run
 docker run hello-world
 ```
 
-#### Container setup
+#### Container Setup:
 
-Note: 
+**Note:** 
 The container builds an image for ros-noetic-base, which allows us to connect basic sensors to noetic. 
 If you want to use rviz and simulators on the pi, you should get the desktop image instead.
 
@@ -70,7 +75,7 @@ docker compose exec -it ros-noetic bash # to run an interactive terminal session
 docker compose stop # to stop the container
 ```
 
-Note:
+**Note:**
 
 I usually wrap up the above commands using aliases or using the docker compose plugin in zsh
 
