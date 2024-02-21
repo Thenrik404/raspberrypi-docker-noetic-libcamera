@@ -57,17 +57,31 @@ docker run hello-world
 
 #### Container setup
 
-Note: The container builds an image for ros-noetic-base. 
+Note: 
+The container builds an image for ros-noetic-base, which allows us to connect basic sensors to noetic. 
+If you want to use rviz and simulators on the pi, you should get the desktop image instead.
 
 
+In the repository run 
+```bash
+docker compose build # to build the container
+docker compose up -d # to start the container
+docker compose exec -it ros-noetic bash # to run an interactive terminal session in the container
+docker compose stop # to stop the container
+```
 
-#### Optional Host Preparations
+Note:
 
-You might want to add this alias to your bashrc/zshrc
+I usually wrap up the above commands using aliases or using the docker compose plugin in zsh
+
+For example, you might want to add this alias to your bashrc/zshrc
 ```bash
 sudo echo "alias dcexec=\"docker exec -it ros-noetic bash\"" >> ~/.bashrc
 ```
 
+To interfer with the camera we use [this library](https://github.com/kbarni/LCCV) which we install at Dockerfile-Level. 
+
+A python example with this image is comming soon.
 
 
 
