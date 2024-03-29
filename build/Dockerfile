@@ -36,22 +36,22 @@ RUN apt -y install pciutils zlib1g unzip mlocate python3-pyqt5
 ## BEGIN: ros:noetic
 ################################################################
 
-# RUN apt update && apt install --no-install-recommends -y \
-#     python3-rosdep \
-#     python3-rosinstall \
-#     python3-vcstools \
-#     python3-catkin-tools \
-#     ros-noetic-cv-bridge \
-#     ros-noetic-tf \
-#     ros-noetic-wfov-camera-msgs \
-#     ros-noetic-image-exposure-msgs \
-#     ros-noetic-camera-info-manager \
-#     ros-noetic-image-transport \
-#     ros-noetic-roslint \
-#     ros-noetic-image-proc \
-#     ros-noetic-robot-state-publisher \
-#     ros-noetic-diagnostic-updater \
-#     ros-noetic-xacro
+RUN apt update && apt install --no-install-recommends -y \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-vcstools \
+    python3-catkin-tools \
+    ros-noetic-cv-bridge \
+    ros-noetic-tf \
+    ros-noetic-wfov-camera-msgs \
+    ros-noetic-image-exposure-msgs \
+    ros-noetic-camera-info-manager \
+    ros-noetic-image-transport \
+    ros-noetic-roslint \
+    ros-noetic-image-proc \
+    ros-noetic-robot-state-publisher \
+    ros-noetic-diagnostic-updater \
+    ros-noetic-xacro
 
 
 ################################################################
@@ -95,6 +95,7 @@ RUN sudo make install
 ## BEGIN: user setup
 ################################################################
 RUN groupadd -g $GID docker
+RUN groupadd -g $GPIOID gpio
 RUN useradd -rm -d /home/docker -s /bin/bash -g docker -G sudo -u $UID docker -p "$(openssl passwd -1 docker)"
 RUN usermod -a -G video docker
 WORKDIR /home/docker
